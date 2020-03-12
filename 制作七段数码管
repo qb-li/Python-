@@ -1,0 +1,39 @@
+#drawsevendigit.py
+import turtle as t
+import time
+def bank(bank):#绘制空格
+    t.penup()
+    t.fd(5)
+    t.pendown()
+def drawline(line):#绘制数字线
+    bank(True)
+    t.pendown()if line else t.penup()
+    t.fd(50)
+    bank(True)
+    t.right(90)
+def drawdigit(n):#绘制数字
+    drawline(True)if n in [2,3,4,5,6,8] else drawline(False)
+    drawline(True)if n in [0,1,3,4,5,6,7,8] else drawline(False)
+    drawline(True)if n in [0,2,3,5,6,8] else drawline(False)
+    drawline(True)if n in [0,2,6,8] else drawline(False)
+    t.left(90)
+    drawline(True)if n in [0,4,5,6,8] else drawline(False)
+    drawline(True)if n in [0,2,3,5,6,7,8] else drawline(False)
+    drawline(True)if n in [0,1,2,3,4,7,8]  else drawline(False)
+    t.left(180)
+    t.penup()
+    t.fd(20)
+def drawdate(date):#绘制日期
+    for i in date:
+        t.pendown()
+        drawdigit(int(i))
+def main():#主程序
+    t.setup(800,400)
+    t.pencolor('red')
+    t.pensize(10)
+    t.penup()
+    t.fd(-300)
+    t.pendown()
+    drawdate(time.strftime('%Y%m%d',time.gmtime()))
+    t.done()
+main()
