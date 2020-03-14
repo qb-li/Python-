@@ -1,0 +1,6 @@
+#randomkeyv1.py#随机密码生成
+import random
+a=eval(input('请输入密码长度：'))
+random.seed(17)
+for i in range(3):
+    print(random.randint(10**(a-1),(10**a-1)))
