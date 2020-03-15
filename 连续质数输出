@@ -7,10 +7,10 @@ def judge(a):
 a=int(round(float(eval(input("请输入数字:"))),0))
 count=5
 while count>0:
-    judge(a)
-    if count>1:
-        print(a,end=(','))
-    else:
-        print(a,end=(''))
-    count-=1
+    if judge(a):
+        if count>1:
+            print(a,end=(','))
+        else:
+            print(a,end=(''))
+        count-=1
     a+=1
