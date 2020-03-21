@@ -1,0 +1,33 @@
+#获得数字输入.py
+def getNum():
+    Nums=[]
+    Numstr=input("请输入数字（回车退出）：")
+    while Numstr !='':
+        Nums.append(eval(Numstr))
+        Numstr=input("请输入数字（回车退出）：")
+    return Nums
+#计算平均值
+def average(Nums):
+    s=0.0
+    for i in Nums:
+        s=s+i
+    return s/len(Nums)
+#计算方差.py
+def dev(Nums,average):
+    sdev=0
+    for n in Nums:
+        sdev=sdev+(n-average)**2
+    return pow(sdev/(len(Nums)-1),0.5)
+#计算中位数
+def median(Nums):
+    Nums=sorted(Nums)#对数列进行排序   注意在此处一定要重新赋值。
+    size=len(Nums)
+    if size %2==0:
+        med=(Nums[size//2-1]+Nums[size//2])/2 #注意计算出来的个数在索引时要-1；例如1-10的中位数为5，6；//2为5 实际索引位置是6故要减去1
+    else:
+        med=Nums[size//2]
+    return med
+n=getNum()
+a=average(n)
+print('平均值：{}，方差：{}，中位数{}'.format(a,dev(n,a),median(n)))
+        
