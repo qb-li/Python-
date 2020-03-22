@@ -1,0 +1,17 @@
+#calhamletv1.py#因为英文句子每个单词间都是空格分开，所以不需要分词，不用用到jieba库；
+def gettxt():#建立一个获取文本的函数
+    txt=open('Hamlet.txt','r').read()#打开文件，"r"表示只读且文本不能是打开状态，read()读取文件
+    txt=txt.lower()#把所有字符转变为小写
+    for ch in ';,!@#$%^&*(){}[]\|‘“”；：，。《》<>?/':#遍历文本中的所有特殊符号
+        txt=txt.replace(ch,' ')#以空格取代所有特殊字符
+    return txt
+hamlettxt=gettxt()#调用函数
+words=hamlettxt.split()#以空格为间隔生成字符串的列表
+counts={}#建立集合
+for word in words:#遍历列表中的字符串
+    counts[word]=counts.get(word,0)+1#给集合赋值，以每一个字符串为键，并每次加1
+items=list(counts.items())#返回所有键值对，并将集合改成列表；
+items.sort(key=lambda x:x[1],reverse=True)#将列表按从高到底进行排序
+for i in range(10):
+    word,count=items[i] #取出所有列表中的兼职对并进行10次赋值循环
+    print('{:<10}{:>5}'.format(word,count))
